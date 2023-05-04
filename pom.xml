@@ -16,6 +16,7 @@
   <modules>
     <module>iceberg-example</module>
     <module>flink-example</module>
+    <module>hudi-example</module>
   </modules>
 
   <properties>
@@ -31,16 +32,24 @@
     <mysql.version>8.0.16</mysql.version>
     <alluxio.version>2.7.3</alluxio.version>
     <iceberg.veriosn>0.13.2</iceberg.veriosn>
+
+    <flink.version>1.14.0</flink.version>
+    <slf4j.version>1.7.30</slf4j.version>
+    <log4j.verison>2.17.2</log4j.verison>
   </properties>
 
 
   <dependencyManagement>
     <dependencies>
+
+      <!-- iceberg -->
       <dependency>
         <groupId>org.apache.iceberg</groupId>
         <artifactId>iceberg-spark3-runtime</artifactId>
         <version>${iceberg.veriosn}</version>
       </dependency>
+
+      <!-- spark -->
       <dependency>
         <groupId>org.apache.iceberg</groupId>
         <artifactId>iceberg-spark3-extensions</artifactId>
@@ -55,6 +64,59 @@
         <groupId>org.apache.spark</groupId>
         <artifactId>spark-sql_${scala.binary.version}</artifactId>
         <version>${spark.version}</version>
+      </dependency>
+
+      <!-- flink -->
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-java</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-streaming-java_${scala.binary.version}</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-clients_${scala.binary.version}</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-table-api-java-bridge_${scala.binary.version}</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-table-planner-blink_${scala.binary.version}</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-streaming-scala_${scala.binary.version}</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-table-common</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <!-- 日志 -->
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-api</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.slf4j</groupId>
+        <artifactId>slf4j-log4j12</artifactId>
+        <version>${slf4j.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.logging.log4j</groupId>
+        <artifactId>log4j-to-slf4j</artifactId>
+        <version>${log4j.verison}</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
