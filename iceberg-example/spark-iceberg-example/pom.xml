@@ -11,24 +11,79 @@
   <packaging>jar</packaging>
 
   <artifactId>spark-iceberg-example</artifactId>
+  <properties>
+    <alluxio.version>2.7.3</alluxio.version>
+    <spark.version>3.3.1</spark.version>
+    <scala.binary.version>2.13</scala.binary.version>
+    <spark.binary.version>3.3</spark.binary.version>
 
+    <scala.version>${scala.binary.version}.8</scala.version>
+    <spark.version>3.3.1</spark.version>
+    <hadoop.version>2.7.4</hadoop.version>
+    <commons-lang3.version>3.12.0</commons-lang3.version>
+    <hive.version>2.3.9</hive.version>
+    <encoding>UTF-8</encoding>
+    <mysql.version>8.0.16</mysql.version>
+    <alluxio.version>2.7.3</alluxio.version>
+    <iceberg.veriosn>1.2.1</iceberg.veriosn>
+
+    <jackson.version>2.13.4.2</jackson.version>
+  </properties>
 
   <dependencies>
+
+    <!-- hadoop依赖-->
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-client</artifactId>
+      <version>${hadoop.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.alluxio</groupId>
+      <artifactId>alluxio-core-client-fs</artifactId>
+      <version>${alluxio.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.alluxio</groupId>
+      <artifactId>alluxio-core-common</artifactId>
+      <version>${alluxio.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.alluxio</groupId>
+      <artifactId>alluxio-shaded-client</artifactId>
+      <version>${alluxio.version}</version>
+    </dependency>
+
+    <!-- iceberg -->
     <dependency>
       <groupId>org.apache.iceberg</groupId>
-      <artifactId>iceberg-spark3-runtime</artifactId>
+      <artifactId>iceberg-spark-runtime-${spark.binary.version}_${scala.binary.version}</artifactId>
+      <version>${iceberg.veriosn}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.iceberg</groupId>
-      <artifactId>iceberg-spark3-extensions</artifactId>
+      <artifactId>iceberg-spark-extensions-${spark.binary.version}_${scala.binary.version}</artifactId>
+      <version>${iceberg.veriosn}</version>
+    </dependency>
+
+    <!-- spark -->
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_2.13</artifactId>
+      <version>${spark.version}</version>
     </dependency>
     <dependency>
       <groupId>org.apache.spark</groupId>
-      <artifactId>spark-core_${scala.binary.version}</artifactId>
+      <artifactId>spark-sql_2.13</artifactId>
+      <version>${spark.version}</version>
     </dependency>
+
+
+    <!-- fasterxml -->
     <dependency>
-      <groupId>org.apache.spark</groupId>
-      <artifactId>spark-sql_${scala.binary.version}</artifactId>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
     </dependency>
   </dependencies>
 

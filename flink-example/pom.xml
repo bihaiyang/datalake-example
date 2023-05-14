@@ -14,6 +14,24 @@
   <properties>
     <maven.compiler.source>8</maven.compiler.source>
     <maven.compiler.target>8</maven.compiler.target>
+
+    <scala.binary.version>2.12</scala.binary.version>
+
+    <maven.compiler.source>1.8</maven.compiler.source>
+    <maven.compiler.target>1.8</maven.compiler.target>
+    <scala.version>${scala.binary.version}.8</scala.version>
+    <spark.version>3.3.1</spark.version>
+    <hadoop.version>2.7.4</hadoop.version>
+    <commons-lang3.version>3.12.0</commons-lang3.version>
+    <hive.version>2.3.9</hive.version>
+    <encoding>UTF-8</encoding>
+    <mysql.version>8.0.16</mysql.version>
+    <alluxio.version>2.7.3</alluxio.version>
+    <iceberg.veriosn>1.2.0</iceberg.veriosn>
+
+    <flink.version>1.14.0</flink.version>
+    <slf4j.version>1.7.30</slf4j.version>
+    <log4j.verison>2.17.2</log4j.verison>
   </properties>
 
   <dependencies>
@@ -33,10 +51,7 @@
       <groupId>org.apache.flink</groupId>
       <artifactId>flink-table-api-java-bridge_${scala.binary.version}</artifactId>
     </dependency>
-    <dependency>
-      <groupId>org.apache.flink</groupId>
-      <artifactId>flink-table-planner-blink_${scala.binary.version}</artifactId>
-    </dependency>
+
     <dependency>
       <groupId>org.apache.flink</groupId>
       <artifactId>flink-streaming-scala_${scala.binary.version}</artifactId>
@@ -46,5 +61,46 @@
       <artifactId>flink-table-common</artifactId>
     </dependency>
   </dependencies>
+
+  <dependencyManagement>
+    <dependencies>
+      <!-- flink -->
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-java</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-streaming-java_${scala.binary.version}</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-clients_${scala.binary.version}</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-table-api-java-bridge_${scala.binary.version}</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-table-planner-blink_${scala.binary.version}</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-streaming-scala_${scala.binary.version}</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.apache.flink</groupId>
+        <artifactId>flink-table-common</artifactId>
+        <version>${flink.version}</version>
+      </dependency>
+    </dependencies>
+  </dependencyManagement>
 
 </project>
