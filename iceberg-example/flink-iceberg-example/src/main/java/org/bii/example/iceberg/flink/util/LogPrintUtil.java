@@ -1,5 +1,6 @@
 package org.bii.example.iceberg.flink.util;
 
+import java.io.File;
 import org.apache.flink.table.api.TableEnvironment;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -40,5 +41,5 @@ public final class LogPrintUtil {
         System.out.println("\n #############" + obj + "############# \n");
         log.info("\n #############{}############# \n ", obj);
     }
-
+    
 }

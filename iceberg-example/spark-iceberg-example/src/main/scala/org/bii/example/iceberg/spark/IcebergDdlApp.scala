@@ -1,7 +1,7 @@
 package org.bii.example.iceberg.spark
 
 import org.apache.log4j.Logger
-import org.apache.spark.sql.{DataFrame, SparkSession}
+import org.apache.spark.sql.SparkSession
 
 
 /**
@@ -30,7 +30,7 @@ object IcebergDdlApp {
       //指定hadoop catalog，catalog名称为hadoop_prod
       .config("spark.sql.catalog.hadoop", "org.apache.iceberg.spark.SparkCatalog")
       .config("spark.sql.catalog.hadoop.type", "hadoop")
-      .config("spark.sql.catalog.hadoop.warehouse", "alluxio://alluxio-master-test-0.default.svc.cluster.local:19998/")
+      .config("spark.sql.catalog.hadoop.warehouse", "alluxio://alluxio-master-test-0.default.svc.cluster.local:19998/iceberg/")
       .getOrCreate()
 
     /** *

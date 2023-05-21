@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <parent>
+    <artifactId>hudi-example</artifactId>
+    <groupId>org.datalake</groupId>
+    <version>1.0-SNAPSHOT</version>
+  </parent>
+  <modelVersion>4.0.0</modelVersion>
+
+  <artifactId>spark-hudi-example</artifactId>
+
+
+  <properties>
+    <alluxio.version>2.7.3</alluxio.version>
+    <spark.version>3.3.1</spark.version>
+    <scala.binary.version>2.12</scala.binary.version>
+    <spark.binary.version>3.3</spark.binary.version>
+
+    <scala.version>${scala.binary.version}.8</scala.version>
+    <spark.version>3.3.1</spark.version>
+    <hadoop.version>2.7.4</hadoop.version>
+    <commons-lang3.version>3.12.0</commons-lang3.version>
+    <hive.version>2.3.9</hive.version>
+    <encoding>UTF-8</encoding>
+    <mysql.version>8.0.16</mysql.version>
+    <alluxio.version>2.7.3</alluxio.version>
+    <hudi.veriosn>0.13.0</hudi.veriosn>
+
+    <jackson.version>2.13.4.2</jackson.version>
+  </properties>
+
+  <dependencies>
+
+    <!-- hadoop依赖-->
+    <dependency>
+      <groupId>org.apache.hadoop</groupId>
+      <artifactId>hadoop-client</artifactId>
+      <version>${hadoop.version}</version>
+      <exclusions>
+        <exclusion>
+          <artifactId>commons-compress</artifactId>
+          <groupId>org.apache.commons</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+    <dependency>
+      <groupId>org.alluxio</groupId>
+      <artifactId>alluxio-core-client-fs</artifactId>
+      <version>${alluxio.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.alluxio</groupId>
+      <artifactId>alluxio-core-common</artifactId>
+      <version>${alluxio.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.alluxio</groupId>
+      <artifactId>alluxio-shaded-client</artifactId>
+      <version>${alluxio.version}</version>
+    </dependency>
+
+    <!-- hudi -->
+    <dependency>
+      <groupId>org.apache.hudi</groupId>
+      <artifactId>hudi-spark3.3-bundle_2.12</artifactId>
+      <version>${hudi.veriosn}</version>
+    </dependency>
+
+    <!-- spark -->
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-core_2.12</artifactId>
+      <version>${spark.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-sql_2.12</artifactId>
+      <version>${spark.version}</version>
+    </dependency>
+
+
+    <!-- fasterxml -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+  </dependencies>
+
+</project>
