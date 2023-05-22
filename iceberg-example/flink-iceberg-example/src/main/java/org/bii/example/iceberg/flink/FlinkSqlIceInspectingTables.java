@@ -2,10 +2,11 @@ package org.bii.example.iceberg.flink;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.apache.flink.table.api.TableResult;
 import org.apache.flink.table.api.bridge.java.StreamTableEnvironment;
 import org.bii.example.iceberg.flink.conf.FlinkSqlConf;
-import org.bii.example.iceberg.flink.sql.catalog.CreateCatalogSQL;
-import org.bii.example.iceberg.flink.sql.catalog.InspectSQL;
+import org.bii.example.iceberg.flink.sql.CreateCatalogSQL;
+import org.bii.example.iceberg.flink.sql.InspectSQL;
 import org.bii.example.iceberg.flink.util.ExecuteSql;
 import org.bii.example.iceberg.flink.util.SqlCommandParser;
 import org.bii.example.iceberg.flink.util.SqlFileParser;
@@ -23,12 +24,15 @@ public class FlinkSqlIceInspectingTables {
     
         StreamTableEnvironment env = FlinkSqlConf.getEnv();
         List<String> sqlList = new ArrayList();
-        sqlList.add(CreateCatalogSQL.CREATE_CATALOG_DB);
-        sqlList.add(InspectSQL.history_sql);
-        sqlList.add(InspectSQL.snapshots_list_sql);
-        sqlList.add(InspectSQL.metadata_log_sql);
+        CreateCatalogSQL.init(sqlList);
+        sqlList.add(InspectSQL.HISTORY_LIST);
+        sqlList.add(InspectSQL.SNAPSHOTS_LIST_SQL);
+        sqlList.add(InspectSQL.METADATA_LOG);
+        sqlList.add(InspectSQL.SNAPSHOT_JOIN_HISTORY);
+        sqlList.add(InspectSQL.MANIFESTS_SQL);
     
         List<SqlCommandParser> sqlCommandCallList = SqlFileParser.sqlListParse(sqlList);
-        ExecuteSql.exeSql(sqlCommandCallList, env);
+        TableResult tableResult = ExecuteSql.exeSql(sqlCommandCallList, env);
+        tableResult.print();
     }
 }

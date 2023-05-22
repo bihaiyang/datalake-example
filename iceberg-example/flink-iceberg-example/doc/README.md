@@ -72,11 +72,10 @@ CREATE CATALOG my_catalog WITH (
 用户也可以自定义catalog 
 
 
-## Create Table 
 
 
-### Inspect table
-
+### Inspect table 
+[iceberg inspect 官网链接](https://iceberg.apache.org/docs/latest/flink-queries/#inspecting-tables)
 ##### History
 
 查询iceberg 模型历史记录,这个历史会显示已经回滚的提交，
@@ -92,8 +91,46 @@ SELECT * from prod.db.`table$metadata_log_entries`;
 ```
 
 ##### Snapshots
+快照，显示当前表的有效快照，
 ```sql
 SELECT * FROM prod.db.`table$snapshots`;
 ```    
     
-    
+##### manifests
+
+查询表当前文件清单
+```sql
+SELECT * FROM prod.db.table$manifests;
+```
+查询当前表所有文件清单
+```sql
+SELECT * FROM prod.db.table$all_manifests;
+```
+###### partition
+查询表分区，在查询非分区表的时候，只会展示file_count和 record_count 两个字段
+```sql
+SELECT * FROM prod.db.table$partitions;
+```
+    ![img_1.png](img_1.png)
+
+
+#### All Metadata Tables
+
+##### All Data Files
+查询所有的文件根据快照，显示的时候每个快照对应的文件， 所以可以会存在一个文件有多行对应多个快照id
+
+```sql
+SELECT * FROM prod.db.table$all_data_files;
+```
+
+###### ref
+查看表已知的快照引用
+```sql
+SELECT * FROM prod.db.table$refs;
+```
+
+
+
+
+
+
