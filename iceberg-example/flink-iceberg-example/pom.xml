@@ -77,6 +77,25 @@
       <artifactId>iceberg-flink-1.16</artifactId>
       <version>${iceberg.veriosn}</version>
     </dependency>
+
+    <dependency>
+      <groupId>org.apache.iceberg</groupId>
+      <artifactId>iceberg-hive-metastore</artifactId>
+      <version>${iceberg.veriosn}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.iceberg</groupId>
+      <artifactId>iceberg-mr</artifactId>
+      <version>${iceberg.veriosn}</version>
+    </dependency>
+    <!-- https://mvnrepository.com/artifact/org.apache.iceberg/iceberg-core -->
+    <dependency>
+      <groupId>org.apache.iceberg</groupId>
+      <artifactId>iceberg-core</artifactId>
+      <version>${iceberg.veriosn}</version>
+    </dependency>
+
+
   </dependencies>
 
 </project>

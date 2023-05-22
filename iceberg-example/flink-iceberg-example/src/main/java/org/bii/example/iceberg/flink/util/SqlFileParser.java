@@ -19,6 +19,19 @@ public class SqlFileParser {
     
     Logger log = LoggerFactory.getLogger(LogPrintUtil.class);
     
+    public static List<SqlCommandParser> sqlListParse(List<String> sqlList) {
+        List<SqlCommandParser> sqlCommandCallList = new ArrayList<>();
+        for(String sql : sqlList){
+            Optional<SqlCommandParser> optionalCall = parse(sql);
+            if (optionalCall.isPresent()) {
+                sqlCommandCallList.add(optionalCall.get());
+            } else {
+                throw new RuntimeException("不支持该语法使用" + sql.toString() + "'");
+            }
+        }
+        return sqlCommandCallList;
+    }
+    
     public static List<SqlCommandParser> fileToSql(String lines) {
         String[] split = lines.split(SystemConstant.LINE_FEED);
         List<String> lineList = Arrays.asList(split);

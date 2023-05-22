@@ -52,10 +52,10 @@ object IcebergDdlApp {
     spark.sql(
       """
         |insert into hadoop.datalake.ods_test values
-        | (1,"zs","iceberg"),
-        | (2,"ls","iceberg"),
-        | (3,"ww","iceberg")
-      """.stripMargin)
+        | (1,"zs","我不喜欢日本"),
+        | (2,"ls","这是一个伸手不见五指的黑夜"),
+        | (3,"ww","this is apple")
+      """.stripMargin).show()
 
   }
 }
