@@ -18,7 +18,7 @@ Libraries:
 ```
 .config("fs.alluxio.impl", "alluxio.hadoop.FileSystem")
 ```
-代码
+相关代码
 
 ### spark-iceberg-example
 使用 spark 版本3.3.1、 alluxio 版本2.7.3、 iceberg 版本1.2.1，如有需要直接修改对应版本即可

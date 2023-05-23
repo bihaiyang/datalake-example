@@ -29,7 +29,6 @@ object SparkUdfApp {
     spark.sql(
       """
         |CREATE FUNCTION to_jieba_array AS 'io.terminus.horus.udf.JiebaWordUdfSegmenter';
-        |
         |""".stripMargin).show()
 
     spark.sql(
