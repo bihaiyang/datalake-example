@@ -71,7 +71,6 @@ object IcebergQueryApp{
 
 
 
-
   }
 
 

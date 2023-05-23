@@ -31,7 +31,16 @@ public class CreateCatalogSQL {
             + "    id   BIGINT,\n"
             + "    data STRING,\n"
             + "    category string\n"
-            + ");\n";
+            + ") with ('format-version'='2', 'write.upsert.enabled'='true');;\n";
+    
+    
+    public static String CREATE_PRIMARY_TABLE =
+            "CREATE TABLE if not exists hadoop.datalake.ods_test( \n"
+                    + "    id   BIGINT,\n"
+                    + "    data STRING,\n"
+                    + "    category string\n"
+                    + "PRIMARY KEY(`id`) NOT ENFORCED"
+                    + ") with ('format-version'='2', 'write.upsert.enabled'='true');;\n";
     
     
     public static void init(List<String> list){
