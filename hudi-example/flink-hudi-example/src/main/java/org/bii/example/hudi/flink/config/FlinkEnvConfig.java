@@ -1,4 +1,4 @@
-package com.bii.example.hudi.flink.config;
+package org.bii.example.hudi.flink.config;
 
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.table.api.EnvironmentSettings;

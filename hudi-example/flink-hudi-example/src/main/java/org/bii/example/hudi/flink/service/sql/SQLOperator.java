@@ -1,4 +1,4 @@
-package com.bii.example.hudi.flink.service.sql;
+package org.bii.example.hudi.flink.service.sql;
 
 import com.google.common.base.Preconditions;
 import java.util.List;

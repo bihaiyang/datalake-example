@@ -1,4 +1,4 @@
-package com.bii.example.hudi.flink.service;
+package org.bii.example.hudi.flink.service;
 
 /**
  * @fileName: HudiCurdDemo.java

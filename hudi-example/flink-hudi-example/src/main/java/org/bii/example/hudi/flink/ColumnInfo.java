@@ -1,4 +1,4 @@
-package com.bii.example.hudi.flink;
+package org.bii.example.hudi.flink;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

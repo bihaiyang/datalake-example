@@ -14,10 +14,10 @@
   <properties>
     <alluxio.version>2.7.3</alluxio.version>
     <spark.version>3.3.1</spark.version>
-    <scala.binary.version>2.13</scala.binary.version>
+    <scala.binary.version>2.12</scala.binary.version>
     <spark.binary.version>3.3</spark.binary.version>
 
-    <scala.version>${scala.binary.version}.8</scala.version>
+    <scala.version>${scala.binary.version}.12</scala.version>
     <spark.version>3.3.1</spark.version>
     <hadoop.version>2.7.4</hadoop.version>
     <commons-lang3.version>3.12.0</commons-lang3.version>

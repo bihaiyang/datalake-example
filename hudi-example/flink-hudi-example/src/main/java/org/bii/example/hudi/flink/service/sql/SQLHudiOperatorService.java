@@ -1,6 +1,6 @@
-package com.bii.example.hudi.flink.service.sql;
+package org.bii.example.hudi.flink.service.sql;
 
-import com.bii.example.hudi.flink.service.HudiOperatorService;
+import org.bii.example.hudi.flink.service.HudiOperatorService;
 import java.util.List;
 import java.util.function.Consumer;
 import org.apache.flink.table.api.StatementSet;

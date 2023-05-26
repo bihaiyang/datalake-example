@@ -1,6 +1,6 @@
-package com.bii.example.hudi.flink.service.ds;
+package org.bii.example.hudi.flink.service.ds;
 
-import com.bii.example.hudi.flink.service.HudiOperatorService;
+import org.bii.example.hudi.flink.service.HudiOperatorService;
 import java.util.function.Consumer;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.hudi.util.HoodiePipeline;

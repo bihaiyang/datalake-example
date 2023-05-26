@@ -1,11 +1,11 @@
-package com.bii.example.hudi.flink.driver;
+package org.bii.example.hudi.flink.driver;
 
-import com.bii.example.hudi.flink.ColumnInfo;
-import com.bii.example.hudi.flink.FlinkSqlBuilder;
-import com.bii.example.hudi.flink.config.FlinkEnvConfig;
-import com.bii.example.hudi.flink.service.HudiOperatorService;
-import com.bii.example.hudi.flink.service.sql.SQLHudiOperatorService;
-import com.bii.example.hudi.flink.service.sql.SQLOperator;
+import org.bii.example.hudi.flink.ColumnInfo;
+import org.bii.example.hudi.flink.FlinkSqlBuilder;
+import org.bii.example.hudi.flink.config.FlinkEnvConfig;
+import org.bii.example.hudi.flink.service.HudiOperatorService;
+import org.bii.example.hudi.flink.service.sql.SQLHudiOperatorService;
+import org.bii.example.hudi.flink.service.sql.SQLOperator;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import java.util.Map;

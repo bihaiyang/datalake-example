@@ -17,8 +17,8 @@
     <spark.version>3.3.1</spark.version>
     <scala.binary.version>2.12</scala.binary.version>
     <spark.binary.version>3.3</spark.binary.version>
+    <scala.version>${scala.binary.version}.12</scala.version>
 
-    <scala.version>${scala.binary.version}.8</scala.version>
     <spark.version>3.3.1</spark.version>
     <hadoop.version>2.7.4</hadoop.version>
     <commons-lang3.version>3.12.0</commons-lang3.version>
@@ -79,6 +79,12 @@
       <artifactId>spark-sql_2.12</artifactId>
       <version>${spark.version}</version>
     </dependency>
+    <!--连接Hive 需要的包，同时，读取Hudi parquet格式数据，也需要用到这个包中的parqurt相关类 -->
+    <dependency>
+      <groupId>org.apache.spark</groupId>
+      <artifactId>spark-hive_2.12</artifactId>
+      <version>${spark.version}</version>
+    </dependency>
 
 
     <!-- fasterxml -->
@@ -86,6 +92,17 @@
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
       <version>${jackson.version}</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-library</artifactId>
+      <version>${scala.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.scala-lang</groupId>
+      <artifactId>scala-compiler</artifactId>
+      <version>${scala.version}</version>
     </dependency>
   </dependencies>
 
