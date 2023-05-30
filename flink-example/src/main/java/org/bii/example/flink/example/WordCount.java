@@ -1,7 +1,5 @@
-package org.bii.example.flink;
+package org.bii.example.flink.example;
 
-import java.util.HashMap;
-import java.util.Map;
 import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.ExecutionEnvironment;
 import org.apache.flink.api.java.operators.AggregateOperator;

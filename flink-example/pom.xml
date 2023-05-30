@@ -29,7 +29,7 @@
     <alluxio.version>2.7.3</alluxio.version>
     <iceberg.veriosn>1.2.0</iceberg.veriosn>
 
-    <flink.version>1.14.0</flink.version>
+    <flink.version>1.17.0</flink.version>
     <slf4j.version>1.7.30</slf4j.version>
     <log4j.verison>2.17.2</log4j.verison>
   </properties>
@@ -60,6 +60,28 @@
       <groupId>org.apache.flink</groupId>
       <artifactId>flink-table-common</artifactId>
     </dependency>
+    <dependency>
+      <groupId>org.apache.flink</groupId>
+      <artifactId>flink-connector-kafka</artifactId>
+      <version>3.0.0-1.17</version>
+    </dependency>
+
+    <dependency>
+      <groupId>org.apache.kafka</groupId>
+      <artifactId>kafka-clients</artifactId>
+      <version>3.4.0</version>
+    </dependency>
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+    </dependency>
+
+    <dependency>
+      <groupId>cn.hutool</groupId>
+      <artifactId>hutool-all</artifactId>
+      <version>5.8.18</version>
+    </dependency>
+
   </dependencies>
 
   <dependencyManagement>
