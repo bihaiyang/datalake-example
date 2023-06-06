@@ -29,9 +29,7 @@ public class KafkaDataProducer {
             }
             kafkaProducer.send(new ProducerRecord<>(topic, data));
         }
-        
         kafkaProducer.close();
-    
     }
     
     

@@ -1,4 +1,4 @@
-package org.bii.example.iceberg.flink.util;
+package org.bii.example.flink.flinksql.util;
 
 import java.util.List;
 import org.apache.commons.lang3.StringUtils;
