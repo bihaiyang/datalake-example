@@ -8,9 +8,7 @@ import com.bii.data.tool.datadictionary.data.DataCollectorFactory;
 import com.bii.data.tool.datadictionary.data.MysqlParam;
 import com.bii.data.tool.datadictionary.data.Table;
 import com.bii.data.tool.util.ExcelUtil;
-import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
-import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 import java.util.Map;
@@ -27,7 +25,7 @@ import org.apache.poi.xssf.streaming.SXSSFWorkbook;
 
 /**
  * @author bihaiyang
- * @desc
+ * @desc 数据字典生成器
  * @since 2023/08/15
  */
 @Slf4j
