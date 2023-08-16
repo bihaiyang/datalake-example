@@ -183,7 +183,7 @@ jobmanager.execution.failover-strategy: region
 # The port to which the REST client connects to. If rest.bind-port has
 # not been specified, then the server will bind to this port as well.
 #
-#rest.port: 8081
+rest.port: 8081
 
 # The address to which the REST client will connect to
 #

@@ -3,7 +3,6 @@ package org.bii.example.flink.dataproductor.kafka;
 import java.time.Duration;
 import java.util.Arrays;
 import java.util.Properties;
-import org.apache.commons.collections.CollectionUtils;
 import org.apache.kafka.clients.consumer.ConsumerRecords;
 import org.apache.kafka.clients.consumer.KafkaConsumer;
 import org.apache.kafka.common.serialization.StringDeserializer;

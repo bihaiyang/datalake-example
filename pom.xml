@@ -17,6 +17,7 @@
     <module>iceberg-example</module>
     <module>flink-example</module>
     <module>hudi-example</module>
+    <module>data-tool</module>
   </modules>
 
   <properties>

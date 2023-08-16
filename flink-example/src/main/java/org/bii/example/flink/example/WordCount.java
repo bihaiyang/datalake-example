@@ -40,8 +40,7 @@ public class WordCount {
                 wordAndOneUg.sum(1);
     
         sum.print();
-
-    
+        
     
     }
 }

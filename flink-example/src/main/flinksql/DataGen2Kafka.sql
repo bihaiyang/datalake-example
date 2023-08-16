@@ -40,3 +40,5 @@ CREATE TABLE ods_order_info (
        'scan.startup.mode' = 'earliest-offset',
        'format' = 'JSON'
 );
+
+
