@@ -18,6 +18,7 @@
     <module>flink-example</module>
     <module>hudi-example</module>
     <module>data-tool</module>
+    <module>oneid-example</module>
   </modules>
 
   <properties>
@@ -48,6 +49,11 @@
         <groupId>org.apache.logging.log4j</groupId>
         <artifactId>log4j-to-slf4j</artifactId>
         <version>${log4j.verison}</version>
+      </dependency>
+      <dependency>
+        <groupId>org.projectlombok</groupId>
+        <artifactId>lombok</artifactId>
+        <version>1.18.26</version>
       </dependency>
     </dependencies>
   </dependencyManagement>
