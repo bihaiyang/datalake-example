@@ -10,6 +10,8 @@ import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.MapFunction;
+import org.apache.spark.graphx.Edge;
+import org.apache.spark.graphx.Graph;
 import org.apache.spark.rdd.RDD;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoder;
@@ -104,28 +106,23 @@ public class OneIdConnectedComponent {
         
         vertexRn.createOrReplaceTempView("vertexRn");
         edgeDf.createOrReplaceTempView("edge");
-        
-        spark.sql("select "
+    
+        Encoder<Edge> edgeEncoder = Encoders.bean(Edge.class);
+    
+        Dataset<Edge> edge = spark.sql("select "
                 + "from edge eg"
                 + "join vertexRn lvt"
                 + "on eg.left_cluster_id = lvt.cluster"
                 + "join vertexRn rvt"
                 + "on eg.right_cluster_id = rvt.cluster").map(
-                        new MapFunction<Row, Edge>() {
-    
-                            @Override
-                            public Object call(Row row) throws Exception {
-                                return null;
-                            }
-                        });
+                (MapFunction<Row, Edge>) row -> new Edge(row.getLong(0), row.getLong(1),
+                        row.getDouble(2)), edgeEncoder);
     
         RDD<Tuple2<String, Tuple3<String, String, Integer>>> vertexRdd = vertexRn.javaRDD().map(
                 (Function<Row, Tuple2<String, Tuple3<String, String, Integer>>>)
                         row -> new Tuple2<>(row.getString(3),
                                 new Tuple3<>(row.getString(0), row.getString(1), row.getInt(2))))
                 .rdd();
-        
-        
     
     
     }
