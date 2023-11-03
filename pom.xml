@@ -19,6 +19,7 @@
     <module>hudi-example</module>
     <module>data-tool</module>
     <module>oneid-example</module>
+    <module>embeddedkafka-server</module>
   </modules>
 
   <properties>

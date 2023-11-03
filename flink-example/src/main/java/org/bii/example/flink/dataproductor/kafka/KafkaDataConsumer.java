@@ -59,7 +59,7 @@ public class KafkaDataConsumer implements Runnable{
     public static void main(String[] args) {
         topic = "producer_test";
         groupId = "consumer_1";
-        brokers = "127.0.0.1:9092";
+        brokers = "127.0.0.1:60799";
         KafkaDataConsumer kafkaDataConsumer = new KafkaDataConsumer();
         Thread thread = new Thread(kafkaDataConsumer);
         thread.start();

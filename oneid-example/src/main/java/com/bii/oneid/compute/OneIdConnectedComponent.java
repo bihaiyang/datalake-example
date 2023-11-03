@@ -1,5 +1,6 @@
 package com.bii.oneid.compute;
 
+import com.bii.oneid.util.MapUtil;
 import com.bii.oneid.util.VertexUtil;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,7 +12,6 @@ import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.api.java.function.Function;
 import org.apache.spark.api.java.function.MapFunction;
 import org.apache.spark.graphx.Edge;
-import org.apache.spark.graphx.Graph;
 import org.apache.spark.rdd.RDD;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoder;
@@ -34,10 +34,7 @@ public class OneIdConnectedComponent {
     
     
     public Dataset<Row> run(Dataset<Row> df, Map<String, Integer> keyPriority){
-        Map<Integer, String> reverseMap = new HashMap<>(keyPriority.size());
-        keyPriority.forEach((key, priority) -> {
-            reverseMap.put(priority, key);
-        });
+        Map<Integer, String> reverseMap = MapUtil.reverse(keyPriority);
         Encoder<KeyPriorityAndValueDf> keyPriorityAndValueDfEncoder = Encoders.bean(KeyPriorityAndValueDf.class);
         Dataset<KeyPriorityAndValueDf> keyPriorityAndValueDfDataset = df
                 .map((MapFunction<Row, KeyPriorityAndValueDf>) row -> {
@@ -82,10 +79,7 @@ public class OneIdConnectedComponent {
                     row.getDouble(4));
         });
         JavaRDD<Tuple7<String, String, Integer, String, String, Integer, Double>> edgeRdd = value
-                .map(v -> {
-                    return new Tuple7<>(v._1()._1(), v._1()._2(), v._1()._3(), v._2()._1(),
-                            v._2()._2(), v._2()._3(), v._3());
-                });
+                .map(v -> new Tuple7<>(v._1()._1(), v._1()._2(), v._1()._3(), v._2()._1(), v._2()._2(), v._2()._3(), v._3()));
         Dataset<Row> edgeDf = spark.createDataFrame(edgeRdd, Tuple7.class).toDF(
                 "left_cluster_id", "left_key", "left_key_type",
                 "right_cluster_id", "right_key", "right_key_type", "cosine_score");
@@ -101,8 +95,7 @@ public class OneIdConnectedComponent {
     
         Dataset<Row> vertexDf = spark.createDataFrame(vertexRDD, Tuple3.class).toDF("cluster_id", "key_id", "key_type");
         vertexDf.createOrReplaceTempView("vertex");
-        Dataset<Row> vertexRn = spark
-                .sql("select cluster_id, key_id, key_type, row_number() over(order by cluster_id) rn from vertex ");
+        Dataset<Row> vertexRn = spark.sql("select cluster_id, key_id, key_type, row_number() over(order by cluster_id) rn from vertex ");
         
         vertexRn.createOrReplaceTempView("vertexRn");
         edgeDf.createOrReplaceTempView("edge");

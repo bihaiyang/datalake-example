@@ -92,7 +92,7 @@ public class DataPreprocess {
     /**
      * 处理噪音消除规则节点
      *
-     * @param oneIDConnfig oneid配置
+     * @param ruleValue oneid配置
      */
     private void noiseRemoveNode(StringBuilder sb, String ruleValue, String condition) {
         Map<String, Object> param = new HashMap<>(4);

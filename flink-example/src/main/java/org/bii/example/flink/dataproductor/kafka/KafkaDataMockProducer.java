@@ -7,9 +7,11 @@ import cn.hutool.json.JSONUtil;
 import java.util.Date;
 import java.util.Properties;
 import java.util.UUID;
+import java.util.concurrent.Future;
 import org.apache.commons.lang3.time.DateFormatUtils;
 import org.apache.kafka.clients.producer.KafkaProducer;
 import org.apache.kafka.clients.producer.ProducerRecord;
+import org.apache.kafka.clients.producer.RecordMetadata;
 
 /**
  * @author bihaiyang
@@ -21,9 +23,9 @@ public class KafkaDataMockProducer {
     public static void main(String[] args) {
         KafkaProducer<String, String> producer;
         String topic = "producer_test";
-        String zk = "127.0.0.1:9092";
+        String zk = "127.0.0.1:60799";
         producer = new KafkaProducer<>(getProp(zk));
-    
+        System.out.println("开始发送");
         for (int i = 0; i < 10; i++) {
             Order order = Order.builder()
                     .uuid(UUID.randomUUID().toString())
@@ -33,11 +35,14 @@ public class KafkaDataMockProducer {
                     .orderTime(DateFormatUtils.format(new Date(),"yyyy-MM-dd HH:mm:ss"))
                     .build();
             try {
-                Thread.sleep(1000);
+                Thread.sleep(100);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-            producer.send(new ProducerRecord<>(topic, JSONUtil.toJsonStr(order)));
+            System.out.println("Success:"+JSONUtil.toJsonStr(order));
+            Future<RecordMetadata> send = producer
+                    .send(new ProducerRecord<>(topic, JSONUtil.toJsonStr(order)));
+            System.out.println(JSONUtil.toJsonStr(send));
             System.out.println("Success:"+JSONUtil.toJsonStr(order));
         }
     
@@ -54,6 +59,7 @@ public class KafkaDataMockProducer {
         //batch.size当批量的数据大小达到设定值后，就会立即发送，不顾下面的linger.ms
         props.put("linger.ms", 1);//延迟1ms发送，这项设置将通过增加小的延迟来完成--即，不是立即发送一条记录，producer将会等待给定的延迟时间以允许其他消息记录发送，这些消息记录可以批量处理
         props.put("buffer.memory", 33554432);//producer可以用来缓存数据的内存大小。
+        props.put("auto.create.topics.enable", true);
         props.put("key.serializer",
                 "org.apache.kafka.common.serialization.IntegerSerializer");
         props.put("value.serializer",
