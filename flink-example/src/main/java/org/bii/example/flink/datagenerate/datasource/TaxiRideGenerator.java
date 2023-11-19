@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.bii.example.flink.common.datasource;
+package org.bii.example.flink.datagenerate.datasource;
 
 import java.util.ArrayList;
 import java.util.List;

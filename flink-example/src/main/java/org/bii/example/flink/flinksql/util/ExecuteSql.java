@@ -13,48 +13,21 @@ import org.slf4j.LoggerFactory;
 public class ExecuteSql {
     
     private static Logger log = LoggerFactory.getLogger(ExecuteSql.class);
-
-    /**
-     * 执行SQL
-     *
-     * @param sqlCommandCallList
-     * @param tEnv
-     * @param statementSet
-     */
-    public static void exeSql(List<SqlCommandParser> sqlCommandCallList, TableEnvironment tEnv,
-            StatementSet statementSet) {
-        for (SqlCommandParser sqlCommandCall : sqlCommandCallList) {
-            switch (sqlCommandCall.sqlCommand) {
-                //配置
-                case SET:
-                    setSingleConfiguration(tEnv, sqlCommandCall.operands[0],
-                            sqlCommandCall.operands[1]);
-                    break;
-                //insert 语句
-                case INSERT_INTO:
-                case INSERT_OVERWRITE:
-                    LogPrintUtil.logPrint(sqlCommandCall);
-                    statementSet.addInsertSql(sqlCommandCall.operands[0]);
-                    break;
-                //显示语句
-                case SELECT:
-                case SHOW_CATALOGS:
-                case SHOW_DATABASES:
-                case SHOW_MODULES:
-                case SHOW_TABLES:
-                    LogPrintUtil.queryRestPrint(tEnv, sqlCommandCall);
-                    break;
-                default:
-                    LogPrintUtil.logPrint(sqlCommandCall);
-                    tEnv.executeSql(sqlCommandCall.operands[0]);
-                    break;
-            }
-        }
+    
+    
+    public static TableResult exeSQLFromFile(String path, TableEnvironment tEnv){
+        List<String> sqls = FileUtils.readLineFromFile(path);
+        List<SqlCommandParser> sqlCommandParsers = SqlFileParser.fileToSql(sqls);
+        return exeSql(sqlCommandParsers, tEnv);
     }
+    
+    
+    public static TableResult exeSQLFromString(String sql, TableEnvironment tEnv){
+        List<SqlCommandParser> sqlCommandCallList = SqlFileParser.fileToSql(sql);
+        return exeSql(sqlCommandCallList, tEnv);
+    }
+    
 
-    /**
-     * 执行sql
-     */
     public static TableResult exeSql(List<SqlCommandParser> sqlCommandCallList,
             TableEnvironment tEnv) {
         TableResult tableResult = null;
@@ -69,7 +42,6 @@ public class ExecuteSql {
                 case INSERT_INTO:
                 case INSERT_OVERWRITE:
                     LogPrintUtil.logPrint(sqlCommandCall);
-                    //statementSet.addInsertSql(sqlCommandCall.operands[0]);
                     tableResult = tEnv.executeSql(sqlCommandCall.operands[0]);
                     break;
                 //显示语句

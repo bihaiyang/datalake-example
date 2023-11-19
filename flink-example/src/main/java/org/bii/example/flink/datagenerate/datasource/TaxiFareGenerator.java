@@ -16,7 +16,7 @@
  * limitations under the License.
  */
 
-package org.bii.example.flink.common.datasource;
+package org.bii.example.flink.datagenerate.datasource;
 
 import java.time.Duration;
 import java.time.Instant;

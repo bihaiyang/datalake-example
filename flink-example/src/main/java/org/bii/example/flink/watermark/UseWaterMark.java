@@ -1,7 +1,6 @@
 package org.bii.example.flink.watermark;
 
 import java.time.Duration;
-import java.util.Stack;
 import org.apache.flink.annotation.VisibleForTesting;
 import org.apache.flink.api.common.eventtime.WatermarkStrategy;
 import org.apache.flink.configuration.Configuration;
@@ -12,7 +11,7 @@ import org.apache.flink.streaming.api.functions.sink.PrintSinkFunction;
 import org.apache.flink.streaming.api.functions.sink.SinkFunction;
 import org.apache.flink.streaming.api.functions.source.SourceFunction;
 import org.apache.flink.util.Collector;
-import org.bii.example.flink.common.datasource.TaxiRideGenerator;
+import org.bii.example.flink.datagenerate.datasource.TaxiRideGenerator;
 import org.bii.example.flink.common.datatype.TaxiRide;
 import org.bii.example.flink.conf.FlinkStreamConf;
 

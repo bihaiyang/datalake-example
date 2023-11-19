@@ -34,7 +34,13 @@ public class SqlFileParser {
         }
         return sqlCommandCallList;
     }
-
+    
+    
+    public static List<SqlCommandParser> sqlFromFile(String path) {
+        String sql = FileUtils.file2String(path);
+        List<SqlCommandParser> sqlCommandParsers = fileToSql(sql);
+        return sqlCommandParsers;
+    }
     
     public static List<SqlCommandParser> fileToSql(String lines) {
         String[] split = lines.split(SystemConstant.LINE_FEED);

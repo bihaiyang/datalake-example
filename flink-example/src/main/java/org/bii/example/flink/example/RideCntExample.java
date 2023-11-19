@@ -6,7 +6,7 @@ import org.apache.flink.api.java.functions.KeySelector;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.datastream.DataStreamSource;
 import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
-import org.bii.example.flink.common.datasource.TaxiRideGenerator;
+import org.bii.example.flink.datagenerate.datasource.TaxiRideGenerator;
 import org.bii.example.flink.common.datatype.TaxiRide;
 import org.bii.example.flink.conf.FlinkStreamConf;
 

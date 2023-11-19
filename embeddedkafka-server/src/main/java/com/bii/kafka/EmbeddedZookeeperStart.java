@@ -10,8 +10,6 @@ import com.bii.kafka.zk.EmbeddedZookeeper;
 public class EmbeddedZookeeperStart {
     
     public static void main(String[] args) {
-    
-        EmbeddedZookeeper embeddedZookeeper = new EmbeddedZookeeper();
-        
+        new EmbeddedZookeeper();
     }
 }
